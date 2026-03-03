@@ -1,0 +1,29 @@
+{
+    "editor.language.brackets": [],
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "vscode-neovim.neovimExecutablePaths.win32": "C:\\Users\\sabax\\nvim-win64\\bin\\nvim.exe",
+    "accessibility.dimUnfocused.opacity": 0.5,
+    "glassit.alpha": 200,
+    "vscode-neovim.neovimInitVimPaths.darwin": "<Your init.lua file path>",
+    "vscode-neovim.compositeKeys": {
+        "jk": {
+            "command": "vscode-neovim.escape"
+        }
+    },
+    "workbench.list.defaultFindMode": "filter",
+    "workbench.list.typeNavigationMode": "automatic",
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 100,
+    "editor.renderWhitespace": "all",
+    "editor.renderControlCharacters": true,
+    "editor.quickSuggestions": {
+        "other": "on",
+        "comments": "on",
+        "strings": "on"
+    },
+    "editor.acceptSuggestionOnCommitCharacter": false
+}
