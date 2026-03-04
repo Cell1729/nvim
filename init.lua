@@ -13,8 +13,8 @@ vim.keymap.set('n', 'L', '$')
 -- VS Code アクション (リーダーキー経由)
 -- Space + p: ファイル検索 (Ctrl+P)
 vim.keymap.set('n', '<leader>p', '<cmd>call VSCodeNotify("workbench.action.quickOpen")<cr>')
--- Space + e: エクスプローラー表示
-vim.keymap.set('n', '<leader>e', '<cmd>call VSCodeNotify("workbench.view.explorer")<cr>')
+-- Space + e: サイドバーの表示/非表示を切り替え
+vim.keymap.set('n', '<leader>e', '<cmd>call VSCodeNotify("workbench.action.toggleSidebarVisibility")<cr>')
 -- Space + q: エディタにフォーカスの戻す
 vim.keymap.set('n', '<leader>q', '<cmd>call VSCodeNotify("workbench.action.focusActiveEditorGroup")<cr>')
 -- Space + ga: エージェント (AIチャット) を開く
