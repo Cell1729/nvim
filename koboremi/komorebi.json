@@ -2,13 +2,18 @@
   "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.30/schema.json",
   "window_hiding_behaviour": "Cloak",
   "cross_monitor_move_behaviour": "Insert",
-  "animation": {
-    "enabled": false
-  },
+  "animation": { "enabled": false },
+  "bar": true, 
   "ignore_rules": [
-  { "kind": "Exe", "id": "MonsterHunterWorld.exe" },
-  { "kind": "Exe", "id": "VALORANT-Win64-Shipping.exe" },
-  { "kind": "Exe", "id": "steam.exe" }
+    { "kind": "Exe", "id": "MonsterHunterWorld.exe" },
+    { "kind": "Exe", "id": "VALORANT-Win64-Shipping.exe" },
+    { "kind": "Exe", "id": "steam.exe" },
+    { "kind": "Exe", "id": "Steamwebhelper.exe" },
+    { "kind": "Class", "id": "SnippingTool" },
+    { "kind": "Class", "id": "ScreenClippingWindow" },
+    { "kind": "Exe", "id": "SnippingTool.exe" },
+    { "kind": "Exe", "id": "ScreenClippingHost.exe" },
+    { "kind": "Exe", "id": "ShareX.exe" }
   ],
   "default_workspace_padding": 0,
   "default_container_padding": 0,
@@ -17,55 +22,10 @@
   "border_offset": -1,
   "theme": {
     "palette": "Base16",
-    "name": "HorizonDark",
-    "unfocused_border": "Base03",
-    "bar_accent": "Base0D"
-  },
-  "stackbar": {
-    "height": 40,
-    "mode": "OnStack",
-    "tabs": {
-      "width": 300
-    }
+    "name": "Ocean"
   },
   "monitors": [
-    {
-      "workspaces": [
-        {
-          "name": "Primary",
-          "layout": "VerticalStack"
-        }
-      ]
-    },
-    {
-      "workspaces": [
-        {
-          "name": "Secondary",
-          "layout": "UltrawideVerticalStack"
-        }
-      ]
-    },
-    {
-      "workspaces": [
-        {
-          "name": "Tertiary",
-          "layout": "Rows"
-        }
-      ]
-    },
-    {
-      "workspaces": [
-        {
-          "name": "Quaternary",
-          "layout": "VerticalStack"
-        }
-      ]
-    }
-  ],
-  "display_index_preferences": {
-    "0": "<モニターのid>",
-    "1": "<モニターのid>",
-    "2": "<モニターのid>",
-    "3": "<モニターのid>"
-  }
+    { "workspaces": [{ "name": "Primary", "layout": "VerticalStack" }] },
+    { "workspaces": [{ "name": "Secondary", "layout": "UltrawideVerticalStack" }] }
+  ]
 }

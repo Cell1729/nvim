@@ -1,26 +1,23 @@
 {
   "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.30/schema.bar.json",
-  "monitor": {
-    "index": 0,
-    "work_area_offset": {
-      "left": 0,
-      "top": 50,
-      "right": 0,
-      "bottom": 50
-    }
+  "monitor": 0,
+  "work_area_offset": {
+    "left": 15,
+    "top": 15,
+    "right": 15,
+    "bottom": 0
   },
   "font_family": "PlemolJP Console HS",
   "theme": {
     "palette": "Base16",
-    "name": "HorizonDark",
-    "accent": "Base0D"
+    "name": "Ocean"
   },
   "left_widgets": [
     {
       "Komorebi": {
         "workspaces": {
           "enable": true,
-          "hide_empty_workspaces": true
+          "hide_empty_workspaces": false
         },
         "layout": {
           "enable": true
@@ -34,9 +31,7 @@
   ],
   "right_widgets": [
     {
-      "Media": {
-        "enable": true
-      }
+      "Media": { "enable": true }
     },
     {
       "Date": {
@@ -48,11 +43,6 @@
       "Time": {
         "enable": true,
         "format": "TwentyFourHour"
-      }
-    },
-    {
-      "Battery": {
-        "enable": true
       }
     }
   ]
