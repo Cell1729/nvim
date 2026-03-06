@@ -88,6 +88,8 @@ return {
 
     -- 画面フルスクリーン切り替え
     { key = "Enter", mods = "ALT", action = act.ToggleFullScreen },
+    -- 最小化
+    { key = "n", mods = "ALT", action = act.Hide },
 
     -- コピーモード
     -- { key = 'X', mods = 'LEADER', action = act.ActivateKeyTable{ name = 'copy_mode', one_shot =false }, },

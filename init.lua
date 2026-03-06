@@ -10,9 +10,18 @@ vim.opt.iminsert = 0
 vim.keymap.set('n', 'H', '^')
 vim.keymap.set('n', 'L', '$')
 
+-- Ctrl + f: 現在のファイルを検索 (Ctrl+F)
+vim.keymap.set('n', '<C-f>', '<cmd>call VSCodeNotify("actions.find")<cr>')
+
 -- VS Code アクション (リーダーキー経由)
 -- Space + p: ファイル検索 (Ctrl+P)
 vim.keymap.set('n', '<leader>p', '<cmd>call VSCodeNotify("workbench.action.quickOpen")<cr>')
+-- Space + f: プロジェクト内全検索 (Ctrl+Shift+F)
+vim.keymap.set('n', '<leader>f', '<cmd>call VSCodeNotify("workbench.action.findInFiles")<cr>')
+-- Space + s: 現在のファイルのシンボル検索 (Ctrl+Shift+O)
+vim.keymap.set('n', '<leader>s', '<cmd>call VSCodeNotify("workbench.action.gotoSymbol")<cr>')
+-- Space + S: ワークスペース全体のシンボル検索 (Ctrl+T)
+vim.keymap.set('n', '<leader>S', '<cmd>call VSCodeNotify("workbench.action.showAllSymbols")<cr>')
 -- Space + e: サイドバーの表示/非表示を切り替え
 vim.keymap.set('n', '<leader>e', '<cmd>call VSCodeNotify("workbench.action.toggleSidebarVisibility")<cr>')
 -- Space + q: エディタにフォーカスの戻す
