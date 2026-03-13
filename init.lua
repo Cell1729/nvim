@@ -21,6 +21,11 @@ require("lazy").setup({
     "nvim-tree/nvim-tree.lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
+  {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.5', -- version = '*' より tag 指定が一般的です
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
 })
 
 -- 3. nvim-tree の設定 (netrwの無効化を含む)
