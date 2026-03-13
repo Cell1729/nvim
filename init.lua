@@ -1,46 +1,67 @@
-﻿vim.g.mapleader = " "
+﻿vim.loader.enable()
 
--- クリップボードをWindowsと同期
+-- 1. lazy.nvim の自動インストール
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- 2. プラグインの登録
+require("lazy").setup({
+  { "folke/lazy.nvim" },
+  {
+    "nvim-tree/nvim-tree.lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
+})
+
+-- 3. nvim-tree の設定 (netrwの無効化を含む)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.opt.termguicolors = true
+
+require("nvim-tree").setup({
+  sort = { sorter = "case_sensitive" },
+  view = { width = 30 },
+  renderer = { group_empty = true },
+  filters = { dotfiles = true },
+})
+
+-- 4. 基本設定
+vim.g.mapleader = " "
 vim.opt.clipboard = "unnamedplus"
-
--- 日本語入力後のEsc挙動を安定させる
 vim.opt.iminsert = 0
 
--- H / L で行の先頭 / 末尾にジャンプ
+-- 5. キーバインド
 vim.keymap.set('n', 'H', '^')
 vim.keymap.set('n', 'L', '$')
 
--- Ctrl + f: 現在のファイルを検索 (Ctrl+F)
-vim.keymap.set('n', '<C-f>', '<cmd>call VSCodeNotify("actions.find")<cr>')
+-- nvim-treeの表示切り替えを Space + n に割り当て (追加しておきました)
+vim.keymap.set('n', '<leader>n', ':NvimTreeToggle<CR>', { silent = true })
 
--- VS Code アクション (リーダーキー経由)
--- Space + p: ファイル検索 (Ctrl+P)
+-- VS Code 連携 (VS Code上でNeovimを使っている場合のみ有効)
+vim.keymap.set('n', '<C-f>', '<cmd>call VSCodeNotify("actions.find")<cr>')
 vim.keymap.set('n', '<leader>p', '<cmd>call VSCodeNotify("workbench.action.quickOpen")<cr>')
--- Space + f: プロジェクト内全検索 (Ctrl+Shift+F)
 vim.keymap.set('n', '<leader>f', '<cmd>call VSCodeNotify("workbench.action.findInFiles")<cr>')
--- Space + s: 現在のファイルのシンボル検索 (Ctrl+Shift+O)
 vim.keymap.set('n', '<leader>s', '<cmd>call VSCodeNotify("workbench.action.gotoSymbol")<cr>')
--- Space + S: ワークスペース全体のシンボル検索 (Ctrl+T)
 vim.keymap.set('n', '<leader>S', '<cmd>call VSCodeNotify("workbench.action.showAllSymbols")<cr>')
--- Space + e: サイドバーの表示/非表示を切り替え
 vim.keymap.set('n', '<leader>e', '<cmd>call VSCodeNotify("workbench.action.toggleSidebarVisibility")<cr>')
--- Space + q: エディタにフォーカスの戻す
 vim.keymap.set('n', '<leader>q', '<cmd>call VSCodeNotify("workbench.action.focusActiveEditorGroup")<cr>')
--- Space + ga: エージェント (AIチャット) を開く
 vim.keymap.set('n', '<leader>ga', '<cmd>call VSCodeNotify("antigravity.toggleChatFocus")<cr>', { silent = true })
--- Space + w: 現在のタブを閉じる
 vim.keymap.set('n', '<leader>w', '<cmd>call VSCodeNotify("workbench.action.closeActiveEditor")<cr>')
--- Space + [ / ]: 前に戻る / 次に進む
 vim.keymap.set('n', '<leader>[', '<cmd>call VSCodeNotify("workbench.action.navigateBack")<cr>')
 vim.keymap.set('n', '<leader>]', '<cmd>call VSCodeNotify("workbench.action.navigateForward")<cr>')
 
--- cc: 行をヤンク (コピー)
+-- コピペ系
 vim.keymap.set('n', 'cc', '"+yy', { noremap = true })
-
--- コピーペーストのキーバインド (Ctrl+c, Ctrl+v)
--- ビジュアルモードで Ctrl+c を押すとシステムクリップボードにコピー
 vim.keymap.set('v', '<C-c>', '"+y')
--- ノーマルモードで Ctrl+v を押すとシステムクリップボードから貼り付け
 vim.keymap.set('n', '<C-v>', '"+p')
--- インサートモードで Ctrl+v を押すと貼り付け
 vim.keymap.set('i', '<C-v>', '<C-r>+')
